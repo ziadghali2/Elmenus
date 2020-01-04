@@ -9,20 +9,31 @@
 import Foundation
 
 class MainScreenInteractor: MainScreenInteractorProtocol {
-  
-    let presenter: MainScreenPresenterProtocol
-    let worker: ElmenusWorkerProtocol
     
-    init(presenter: MainScreenPresenterProtocol, worker: ElmenusWorkerProtocol) {
+    //MARK: - Attributes
+    let presenter: MainScreenPresenterProtocol
+    let remoteWorker: ElmenusWorkerProtocol
+    let localWorker: ElmenusDataBaseWorker
+    
+    //MARK: - init
+    init(_ presenter: MainScreenPresenterProtocol,_ remoteWorker: ElmenusWorkerProtocol,_ localWorker: ElmenusDataBaseWorker = ElmenusDataBaseWorker.shared) {
         self.presenter = presenter
-        self.worker = worker
+        self.remoteWorker = remoteWorker
+        self.localWorker = localWorker
     }
     
+    //MARK: - Methods
     func getTags(_ page: Int) {
-        worker.getTags(page, { [unowned self] response in
-            self.presenter.handleTagsResponse(response.tags)
-        }) { [unowned self] error in
-            self.presenter.handleTagsError(error)
+        if NetworkState.isConnected {
+            remoteWorker.getTags(page, { [weak self] response in
+                self?.localWorker.saveEntities(response.tags.map{$0.entity})
+                self?.presenter.handleTagsResponse(response.tags)
+            }) { [weak self] error in
+                self?.presenter.handleTagsError(error)
+            }
+        } else {
+            let tags = localWorker.loadTags()
+            presenter.handleTagsResponse(tags)
         }
     }
     

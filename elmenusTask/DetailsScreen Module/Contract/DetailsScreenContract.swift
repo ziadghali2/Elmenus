@@ -8,13 +8,7 @@
 
 import Foundation
 
-enum DetailsScreenRoute {
-    case close
-}
-
-protocol DetailsScreenRouterProtocol {
-    func go(to route: DetailsScreenRoute)
-}
+protocol DetailsScreenRouterProtocol { }
 
 protocol DetailsScreenInteractorProtocol { }
 

@@ -9,29 +9,24 @@
 import Foundation
 import UIKit
 
-class MainScreenRouter {
+class MainScreenRouter: MainScreenRouterProtocol {
     
     // MARK: - Attributes
     weak var viewController: UIViewController?
     
-    static func assembleModule() -> UIViewController {
-        let view = MainScreenViewController()
-        let router = MainScreenRouter()
-        let viewModel = MainScreenViewModel()
-        let persenter = MainScreenPresenter(view: view)
-        let worker = ElmenusRemoteService()
-        let interactor = MainScreenInteractor(presenter: persenter, worker: worker)
-        
-        view.viewModel = viewModel
-        view.interactor = interactor
-        view.router = router
-        
-        return view
+    //MARK: - init
+    init(_ viewController: UIViewController) {
+        self.viewController = viewController
     }
     
+    //MARK: - Methods
     func go (to destination: MainScreenRoute) {
         switch destination {
-        case .items: break
+            case let .items(tagName,view):
+                let itemsVC = ItemsScreenRouter.assembleModule(tagName)
+                viewController?.removeAllChilds()
+                viewController?.add(child: itemsVC, at: view)
+                viewController?.view.layoutIfNeeded()
         }
     }
     

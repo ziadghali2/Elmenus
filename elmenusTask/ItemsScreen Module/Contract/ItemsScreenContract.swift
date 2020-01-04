@@ -7,3 +7,26 @@
 //
 
 import Foundation
+
+enum ItemsScreenRoute {
+    case details(ItemViewModel)
+}
+
+protocol ItemsScreenRouterProtocol {
+    func go(to route: ItemsScreenRoute)
+}
+
+protocol ItemsScreenInteractorProtocol {
+    func getItems(_ name: String)
+}
+
+protocol ItemsScreenPresenterProtocol: class {
+    func handleTagsResponse(_ tags: [Item])
+    func handleTagsError(_ error: Error)
+}
+
+protocol ItemsScreenViewControllerProtocol: class {
+    func updateUIWithItems(_ itemsViewModels: [ItemViewModel])
+    func updateUIWihError(_ error: Error)
+}
+

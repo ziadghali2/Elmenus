@@ -9,9 +9,12 @@
 import Foundation
 
 class TagViewModel {
+    
+    //MARK: - Attributes
     var name: String
     var photoURL: URL?
     
+    //MARK: - init
     init(_ name: String, _ photoURL: String) {
         if let prettyName = name.components(separatedBy: "- ").last {
             self.name = prettyName

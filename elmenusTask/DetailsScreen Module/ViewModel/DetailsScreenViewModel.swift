@@ -7,3 +7,14 @@
 //
 
 import Foundation
+
+class DetailsScreenViewModel {
+    
+    //MARK: - Attributes
+    let itemViewModel: ItemViewModel
+    
+    //MARK: - init
+    init(_ itemViewModel: ItemViewModel) {
+        self.itemViewModel = itemViewModel
+    }
+}

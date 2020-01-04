@@ -7,3 +7,22 @@
 //
 
 import Foundation
+import RealmSwift
+
+class TagEntity: Object {
+    
+    @objc dynamic var tagName: String = ""
+    @objc dynamic var photoURL: String = ""
+    
+    override class func primaryKey() -> String? {
+        return "tagName"
+    }
+}
+
+extension TagEntity {
+    
+    var object: Tag {
+        let tag = Tag(tagName: tagName, photoURL: photoURL)
+        return tag
+    }
+}

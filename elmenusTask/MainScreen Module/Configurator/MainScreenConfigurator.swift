@@ -17,8 +17,8 @@ final class MainScreenConfigurator {
         let router = MainScreenRouter(viewController)
         let viewModel = MainScreenViewModel()
         let persenter = MainScreenPresenter(viewController)
-        let worker = ElmenusRemoteService()
-        let interactor = MainScreenInteractor(presenter: persenter, worker: worker)
+        let remoteWorker = ElmenusRemoteService()
+        let interactor = MainScreenInteractor(persenter, remoteWorker)
         
         viewController.viewModel = viewModel
         viewController.interactor = interactor

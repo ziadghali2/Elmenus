@@ -9,6 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainScreenViewController" customModule="elmenusTask" customModuleProvider="target">
             <connections>
+                <outlet property="itemsTableContainer" destination="1go-JG-re6" id="V1p-0Z-yTm"/>
                 <outlet property="mainCollectionView" destination="AHB-jo-Vw2" id="q0P-ys-UsK"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -19,8 +20,11 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="AHB-jo-Vw2">
-                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
-                    <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <rect key="frame" x="0.0" y="44" width="414" height="300"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="300" id="bmH-qK-7th"/>
+                    </constraints>
                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="uGm-24-OBx">
                         <size key="itemSize" width="50" height="50"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -28,16 +32,23 @@
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
                 </collectionView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1go-JG-re6">
+                    <rect key="frame" x="0.0" y="344" width="414" height="518"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
             </subviews>
-            <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="AHB-jo-Vw2" secondAttribute="bottom" id="K1u-hl-LmY"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="1go-JG-re6" secondAttribute="trailing" id="8nj-fg-lwK"/>
+                <constraint firstItem="1go-JG-re6" firstAttribute="top" secondItem="AHB-jo-Vw2" secondAttribute="bottom" id="RwL-yj-wt3"/>
+                <constraint firstItem="1go-JG-re6" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="UjG-mf-M6l"/>
                 <constraint firstItem="AHB-jo-Vw2" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="dEM-cY-BHG"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="1go-JG-re6" secondAttribute="bottom" id="gUp-8s-egb"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="AHB-jo-Vw2" secondAttribute="trailing" id="n7s-Mu-n5u"/>
                 <constraint firstItem="AHB-jo-Vw2" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="vWD-g3-P87"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="139" y="115"/>
+            <point key="canvasLocation" x="137.68115942028987" y="114.50892857142857"/>
         </view>
     </objects>
 </document>

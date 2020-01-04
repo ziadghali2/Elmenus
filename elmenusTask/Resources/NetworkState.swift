@@ -7,3 +7,11 @@
 //
 
 import Foundation
+import Alamofire
+
+class NetworkState {
+
+    class var isConnected: Bool {
+        return NetworkReachabilityManager(host: "www.google.com")!.isReachable
+    }
+}

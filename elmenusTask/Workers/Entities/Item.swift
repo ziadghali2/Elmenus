@@ -17,3 +17,16 @@ struct Item {
 
 //MARK: - Codable
 extension Item: Codable {}
+
+//MARK: - Entity
+extension Item {
+    
+    var entity: ItemEntity {
+        let entity = ItemEntity()
+        entity.id = id
+        entity.name = name
+        entity.photoUrl = photoUrl
+        entity.itemDescription = description
+        return entity
+    }
+}

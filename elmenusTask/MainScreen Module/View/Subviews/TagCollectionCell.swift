@@ -22,6 +22,7 @@ class TagCollectionCell: UICollectionViewCell {
         tagImageView.image = nil
     }
     
+    //MARK: - Methods
     func fillWith(_ name: String, _ imageUrl: URL) {
         tagName.text = name
         tagImageView.kf.indicatorType = .activity

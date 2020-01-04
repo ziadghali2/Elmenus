@@ -7,24 +7,38 @@
 //
 
 import UIKit
+import Kingfisher
 
 class DetailsScreenViewController: UIViewController {
 
+    //MARK: - Outlet
+    @IBOutlet weak var itemImageView: UIImageView!
+    @IBOutlet weak var itemDescription: UILabel!
+    
+    //MARK: - Attributes
+    var viewModel: DetailsScreenViewModel!
+    var router: DetailsScreenRouterProtocol!
+    
+    //MARK:- LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        setupUI()
     }
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    //MARK: - Setup UI
+    private func setupUI() {
+        setupNavigationTitle()
+        setupUIWithViewModel()
     }
-    */
+    
+    private func setupNavigationTitle() {
+        title = viewModel.itemViewModel.name
+    }
+    
+    private func setupUIWithViewModel() {
+        itemImageView.kf.indicatorType = .activity
+        itemImageView.kf.setImage(with: viewModel.itemViewModel.photoURL)
+        itemDescription.text = viewModel.itemViewModel.description
+    }
 
 }

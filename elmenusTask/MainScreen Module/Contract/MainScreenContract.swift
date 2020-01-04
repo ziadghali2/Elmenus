@@ -7,16 +7,21 @@
 //
 
 import Foundation
+import UIKit
 
 enum MainScreenRoute {
-    case items(_ tagName: String)
+    case items(_ tagName: String,_ view: UIView)
+}
+
+protocol MainScreenRouterProtocol {
+    func go(to route: MainScreenRoute)
 }
 
 protocol MainScreenInteractorProtocol {
     func getTags(_ page: Int)
 }
 
-protocol MainScreenPresenterProtocol {
+protocol MainScreenPresenterProtocol: class {
     func handleTagsResponse(_ tags: [Tag])
     func handleTagsError(_ error: Error)
 }

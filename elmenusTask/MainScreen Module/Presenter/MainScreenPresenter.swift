@@ -9,15 +9,17 @@
 import Foundation
 
 class MainScreenPresenter: MainScreenPresenterProtocol {
-    
+    //MARK: - Attributes
     private weak var view: MainScreenViewControllerProtocol?
     
-    init(view: MainScreenViewControllerProtocol) {
+    //MARK: - init
+    init(_ view: MainScreenViewControllerProtocol) {
         self.view = view
     }
     
+    //MARK: - Methods
     func handleTagsResponse(_ tags: [Tag]) {
-        let tagViewModels = tags.flatMap{TagViewModel($0.tagName, $0.photoURL)}
+        let tagViewModels = tags.compactMap{TagViewModel($0.tagName, $0.photoURL)}
         view?.updateUIWithTags(tagViewModels)
     }
     

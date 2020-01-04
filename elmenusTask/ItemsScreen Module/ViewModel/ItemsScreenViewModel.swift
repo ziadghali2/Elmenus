@@ -7,3 +7,16 @@
 //
 
 import Foundation
+import SimpleTwoWayBinding
+
+class ItemsScreenViewModel {
+    
+    //MARK: - Attributes
+    let itemViewModels: Observable<[ItemViewModel]> = Observable([])
+    let tagName: String
+    
+    //MARK: - init
+    init(_ tagName: String) {
+        self.tagName = tagName
+    }
+}

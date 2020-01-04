@@ -15,3 +15,13 @@ struct Tag {
 
 // MARK: - Codable
 extension Tag: Codable { }
+
+//MARK: - Entity
+extension Tag {
+    var entity: TagEntity{
+        let entity = TagEntity()
+        entity.tagName = tagName
+        entity.photoURL = photoURL
+        return entity
+    }
+}

@@ -10,5 +10,9 @@ import Foundation
 import SimpleTwoWayBinding
 
 class MainScreenViewModel {
-    var tagViewModels: Observable<[TagViewModel]> = Observable([])
+    
+    //MARK: - Attributes
+    let tagViewModels: Observable<[TagViewModel]> = Observable([])
+    let navigationTitle: String = "Tags"
+    var pageNumber = 0
 }
